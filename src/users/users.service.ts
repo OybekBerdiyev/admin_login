@@ -19,6 +19,10 @@ export class UsersService {
       throw new UnauthorizedException('username or password incorrect1')
     }
 
+    if (user.password != password) {
+      throw new UnauthorizedException('username or password incorrect1')
+    }
+
     const tokens = await this.tokenService.getToken(user)
     res.cookie('refresh_token', tokens.refresh_token, {
       maxAge: 15*24*60*60*1000,
