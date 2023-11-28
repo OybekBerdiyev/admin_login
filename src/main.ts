@@ -6,6 +6,7 @@ import { NestFactory } from '@nestjs/core';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
   const port = process.env.PORT
   app.use(cookieParser())
   app.setGlobalPrefix("api")
